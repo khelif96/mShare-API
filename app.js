@@ -16,7 +16,7 @@ try{
   process.exit(1);
 }
 // Mongodb
-mongoose.connect(process.env.DB_URL); // Connect to database on Server
+mongoose.connect(process.env.DB_URL,{useMongoClient:true}); // Connect to database on Server
 
 var db = mongoose.connection;
 
