@@ -26,6 +26,6 @@ exports.getNotes = (req,res) => {
     error.error.status = 400;
     error.error.message = "Missing paramater: 'api_token'";
     res.status(error.error.status);
-    res.send(error)
+    res.send(error);
   }
 };

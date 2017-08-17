@@ -20,7 +20,7 @@
        "validator" : "*",
        "winston" : "*",
        "hat" : "*",
-       "bcrypt" : "*",
+       "bcryptjs" : "*",
        "dotenv" : "*"
 
      },

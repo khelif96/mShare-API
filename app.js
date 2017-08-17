@@ -1,15 +1,20 @@
 // BASE SETUP
 // ================================================
 // Dependencies
-var express = require('express'); // Call express
-var mongoose = require('mongoose'); // Interface for mongodb
-var bodyParser = require('body-parser');
-var hat = require('hat'); // Library for generating random ids
+try{
+  var express = require('express'); // Call express
+  var mongoose = require('mongoose'); // Interface for mongodb
+  var bodyParser = require('body-parser');
+  var hat = require('hat'); // Library for generating random ids
+  require('dotenv').config();
+  // Winston Logger
+  var logger = require('./utils/logger.js');
 
-
-// Winston Logger
-var logger = require('./utils/logger.js');
-
+}catch(error){
+  console.log("ERROR are all the Dependencies installed?");
+  console.log(error);
+  process.exit(1);
+}
 // Mongodb
 mongoose.connect(process.env.DB_URL); // Connect to database on Server
 

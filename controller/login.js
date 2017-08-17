@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var hat = require('hat');
 
 var User = require('../app/models/user');
@@ -16,6 +16,7 @@ exports.getLoginUser = (req,res) => {
 
 exports.loginUser = (req,res) => {
   if(req.body.email === undefined || req.body.password === undefined){
+    res.status(400);
     res.json({error: "Missing email or password in request"});
   }else{
     console.log("Trying to find email");
