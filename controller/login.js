@@ -18,8 +18,12 @@ exports.getLoginUser = (req,res) => {
 
 exports.loginUser = (req,res) => {
   if(req.body.email === undefined || req.body.password === undefined){
-    res.status(400);
-    res.json({error: "Missing email or password in request"});
+    error = new ErrorMessage();
+    error.error.status = 400;
+    error.error.message = "Missing email or password in request";
+    res.status(error.error.status);
+    res.send(error);
+
   }else{
     console.log("Trying to find email");
     User.find({email: new RegExp(req.body.email, 'i')}, function (err,docs){
@@ -30,7 +34,7 @@ exports.loginUser = (req,res) => {
         error.error.message = "Could not find account";
         res.status(error.error.status);
         res.send(error);
-        
+
       }else{
         console.log("Somehow got here");
         // TODO check password hash if matches stored password if so return an api_token
@@ -57,8 +61,11 @@ exports.loginUser = (req,res) => {
 
 exports.registerUser = (req,res) => {
   if(req.body.email === undefined || req.body.password === undefined){
-    res.status(400);
-    res.json({error: "Missing email or password in request"});
+    error = new ErrorMessage();
+    error.error.status = 400;
+    error.error.message = "Missing email or password in request";
+    res.status(error.error.status);
+    res.send(error);
   }else{
     User.find({email: new RegExp(req.body.email, 'i')}, function (err,docs){
       if(!docs.length){
