@@ -1,5 +1,5 @@
 node_modules/
 all-logs.log*
-npm_debug.log*
+npm-debug.log*
 DS_Store*
 .env*
