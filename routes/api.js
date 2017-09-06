@@ -9,6 +9,7 @@ const login = require('../controller/login');
 const updateUser = require('../controller/updateUser');
 const newNote = require('../controller/newNote');
 const getNotes = require('../controller/getNotes');
+
 // const getUser = require('../controller/getUser');
 
 // API
@@ -23,6 +24,8 @@ router.post('/loginUser', login.loginUser);
 router.put('/updateUser', updateUser.updateUser);
 
 router.post('/newNote', newNote.createTextNote);
+
+router.post('/newImageNote', newNote.createImageNote);
 
 router.post('/getNotes', getNotes.getNotes);
 
