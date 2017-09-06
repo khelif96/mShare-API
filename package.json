@@ -21,7 +21,8 @@
        "winston" : "*",
        "hat" : "*",
        "bcryptjs" : "*",
-       "dotenv" : "*"
+       "dotenv" : "*",
+       "aws-sdk": "*"
 
      },
   "author": "Mohamed Khelif",
