@@ -5,8 +5,16 @@ var ErrorMessage = require('../app/models/responseSchemas/error');
 var SuccessMessage = require('../app/models/responseSchemas/successSchema');
 
 exports.getNotes = (req,res) => {
+  // console.log("headers" + req.headers.api_token);
+  var api_token;
   if(req.body.api_token !== undefined){
-    User.findOne({'api_token' : req.body.api_token}, function(err,docs){
+    api_token = req.body.api_token;
+
+  }else if(req.headers.api_token !== undefined){
+    api_token = req.headers.api_token;
+  }
+  if(api_token !== undefined){
+    User.findOne({'api_token' : api_token}, function(err,docs){
       if(!docs){
         error = new ErrorMessage();
         error.error.status = 401;
