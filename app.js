@@ -5,7 +5,7 @@ try{
   var express = require('express'); // Call express
   var mongoose = require('mongoose'); // Interface for mongodb
   var bodyParser = require('body-parser');
-  var hat = require('hat'); // Library for generating random ids
+  // var hat = require('hat'); // Library for generating random ids
   require('dotenv').config();
   // Winston Logger
   var logger = require('./utils/logger.js');
@@ -33,6 +33,7 @@ db.on('disconnected', function () {
 
 db.on('error', function(){
   logger.log("error", "ERROR Status Code " + mongoose.connection.readyState);
+  process.exit(0);
 });
 
 // If the Node process ends, close the Mongoose connection
@@ -49,7 +50,7 @@ process.on('SIGINT', function() {
 var port = 3000; // Set our port Default is 80
 
 // Configure hat for generating api tokens
-var rack = hat.rack(64,16);
+// var rack = hat.rack(64,16);
 
 // Express
 var app = express(); // Define our app using expressnp
@@ -76,5 +77,10 @@ var apiRouter = require('./routes/api');      // Get an instance of the express 
 // All api routes will be prefixed with /api
 app.use('/api', apiRouter);
 
+try{
 // Start Server
-app.listen(port);
+  app.listen(port);
+  logger.log('info', "Server started on port: " + port);
+}catch(error){
+  logger.log('error', error);
+}
