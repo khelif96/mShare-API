@@ -6,8 +6,8 @@ var Note = require('../app/models/note');
 // var ImageNote = require('../apps/models/imageNote');
 var ErrorMessage = require('../app/models/responseSchemas/error');
 var SuccessMessage = require('../app/models/responseSchemas/successSchema');
-var multer = require('multer');
-var upload = multer({dest: 'tempUploads/'});
+// var multer = require('multer');
+// var upload = multer({dest: 'tempUploads/'});
 // Config AWS
 // AWS.config.update({accessKeyId=process.env.accessKeyId, secretAccessKey=process.env.secretAccessKey});
 // var s3 = new AWS.S3();

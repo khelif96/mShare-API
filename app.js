@@ -5,6 +5,8 @@ try{
   var express = require('express'); // Call express
   var mongoose = require('mongoose'); // Interface for mongodb
   var bodyParser = require('body-parser');
+  var PrettyError = require('pretty-error');
+  var pe = new PrettyError();
   // var hat = require('hat'); // Library for generating random ids
   require('dotenv').config();
   // Winston Logger
@@ -15,6 +17,7 @@ try{
   console.log(error);
   process.exit(1);
 }
+try{
 // Mongodb
 mongoose.connect(process.env.DB_URL,{useMongoClient:true}); // Connect to database on Server
 
@@ -83,4 +86,7 @@ try{
   logger.log('info', "Server started on port: " + port);
 }catch(error){
   logger.log('error', error);
+}
+}catch(error){
+  console.log(pe.render(error));
 }

@@ -10,7 +10,7 @@ var imageNoteSchema = new Schema({
   NoteType: {type: String, default: "image"},
   is_public: {type: Boolean, default: false},
   access_ids: [],
-  createdDate: {type: Date, default:Date.now}
+  createdDate: {type: Date, default: Date.now}
 });
 
-module.exports = mongoose.model('ImageNote', imageNoteSchema);
+module.exports = mongoose.model('imageNote', imageNoteSchema);
