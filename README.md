@@ -1,3 +1,4 @@
 # Backend server side Code for mShare Android app
 
-![App Demo](https://i.imgur.com/HzjzdQO.gif)
+<img src="/appdemo.gif?raw=true" width="200px">
+
